@@ -7,8 +7,22 @@ function Calculator() {
 
   const handleClick = (value) => {
     if (value === "=") {
+      if (!expression) {
+        setResult("Error");
+        return;
+      }
       try {
-        setResult(eval(expression) || "Error");
+        let result;
+        if (expression.includes("/ 0")) {
+          if (expression === "0 / 0") {
+            result = "NaN"; // Handle 0 divided by 0
+          } else {
+            result = "Infinity"; // Handle division by 0
+          }
+        } else {
+          result = eval(expression);
+        }
+        setResult(result);
       } catch (error) {
         setResult("Error");
       }
