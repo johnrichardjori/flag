@@ -4,12 +4,13 @@ import "./index.css";
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // import Flag from "./Flag/Flag";
-import Stopwatch from "./Stopwatch/Stopwatch";
+// import Stopwatch from "./Stopwatch/Stopwatch";
+import FullNameForm from "./Fullname/Fullname";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Stopwatch />
+    <FullNameForm />
   </React.StrictMode>
 );
 
