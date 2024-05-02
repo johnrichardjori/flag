@@ -6,12 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 // import Flag from "./Flag/Flag";
 // import Stopwatch from "./Stopwatch/Stopwatch";
 // import FullNameForm from "./Fullname/Fullname";
-import Counter from "./Counter/Counter";
+// import Counter from "./Counter/Counter";
+import Calculator from "./Calculator/Calculator";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Counter />
+    <Calculator />
   </React.StrictMode>
 );
 
