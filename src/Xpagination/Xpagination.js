@@ -1,97 +1,78 @@
-// Pagination.jsx
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import "./Xpagination.css";
 
-class Pagination extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      currentPage: 1,
-      totalPages: null,
-    };
-  }
+const Pagination = () => {
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  componentDidMount() {
-    this.fetchData();
-  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  fetchData = () => {
-    fetch(
-      "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        this.setState({
-          data: data,
-          totalPages: Math.ceil(data.length / 10),
-        });
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
-
-  handleNext = () => {
-    if (this.state.currentPage < this.state.totalPages) {
-      this.setState((prevState) => ({
-        currentPage: prevState.currentPage + 1,
-      }));
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const jsonData = await response.json();
+      setData(jsonData);
+      setTotalPages(Math.ceil(jsonData.length / 10));
+    } catch (error) {
+      alert("Failed to fetch data");
+      console.error(error);
     }
   };
 
-  handlePrevious = () => {
-    if (this.state.currentPage > 1) {
-      this.setState((prevState) => ({
-        currentPage: prevState.currentPage - 1,
-      }));
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
     }
   };
 
-  render() {
-    const { data, currentPage } = this.state;
-    const startIndex = (currentPage - 1) * 10;
-    const endIndex = Math.min(startIndex + 10, data.length);
-    const currentData = data.slice(startIndex, endIndex);
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
-    return (
-      <div className="pagination">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
+  const startIndex = (currentPage - 1) * 10;
+  const endIndex = Math.min(startIndex + 10, data.length);
+
+  return (
+    <div className="pagination-container">
+      <table className="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.slice(startIndex, endIndex).map((item, index) => (
+            <tr key={index}>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
             </tr>
-          </thead>
-          <tbody>
-            {currentData.map((item, index) => (
-              <tr key={index}>
-                <td>{item.name}</td>
-                <td>{item.email}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="pagination-buttons">
-          <button onClick={this.handlePrevious} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <span>Page {currentPage}</span>
-          <button
-            onClick={this.handleNext}
-            disabled={currentPage === this.state.totalPages}
-          >
-            Next
-          </button>
-        </div>
+          ))}
+        </tbody>
+      </table>
+      <div className="pagination-controls">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Pagination;
