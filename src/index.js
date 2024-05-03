@@ -10,11 +10,12 @@ import reportWebVitals from "./reportWebVitals";
 import Pagination from "./Xpagination/Xpagination";
 import Calculator from "./Calculator/Calculator";
 import XLogin from "./Xlogin/Xlogin";
+import Countrysearch from "./Xcountry/Countrysearch";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <XLogin />
+    <Countrysearch />
   </React.StrictMode>
 );
 
