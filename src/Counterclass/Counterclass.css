@@ -1,0 +1,20 @@
+/* Counter.css */
+.counter {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.count-display {
+  font-size: 24px;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.button-container button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
