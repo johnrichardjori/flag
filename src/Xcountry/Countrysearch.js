@@ -1,3 +1,5 @@
+// CountryApp.jsx
+
 import React, { useState, useEffect } from "react";
 import "./Countrysearch.css";
 
@@ -12,34 +14,38 @@ const Countrysearch = () => {
   const fetchCountries = async () => {
     try {
       const response = await fetch("https://restcountries.com/v3.1/all");
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
       const data = await response.json();
       setCountries(data);
     } catch (error) {
-      console.error("Error fetching countries data:", error);
+      console.error(error);
+      alert("Failed to fetch data");
     }
   };
 
   const handleSearch = (e) => {
-    setSearchTerm(e.target.value.toLowerCase());
+    setSearchTerm(e.target.value);
   };
 
   const filteredCountries = countries.filter((country) =>
-    country.name.common.toLowerCase().includes(searchTerm)
+    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="container">
+    <div className="country-app">
       <input
         type="text"
-        className="search-input"
-        placeholder="Search for a country..."
+        placeholder="Search country..."
+        value={searchTerm}
         onChange={handleSearch}
       />
-      <div className="countries">
+      <div className="country-list">
         {filteredCountries.map((country) => (
-          <div key={country.name.common} className="country-card">
+          <div key={country.cca2} className="country-card">
             <img src={country.flags.svg} alt={country.name.common} />
-            <span>{country.name.common}</span>
+            <h2>{country.name.common}</h2>
           </div>
         ))}
       </div>
