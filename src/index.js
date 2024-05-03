@@ -12,11 +12,12 @@ import Calculator from "./Calculator/Calculator";
 import XLogin from "./Xlogin/Xlogin";
 import Countrysearch from "./Xcountry/Countrysearch";
 import Counterclass from "./Counterclass/Counterclass";
+import Weatherapp from "./Weather/Weatherapp";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Counterclass />
+    <Weatherapp />
   </React.StrictMode>
 );
 
