@@ -7,12 +7,13 @@ import reportWebVitals from "./reportWebVitals";
 // import Stopwatch from "./Stopwatch/Stopwatch";
 // import FullNameForm from "./Fullname/Fullname";
 // import Counter from "./Counter/Counter";
+import Pagination from "./Xpagination/Xpagination";
 import Calculator from "./Calculator/Calculator";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Calculator />
+    <Pagination />
   </React.StrictMode>
 );
 

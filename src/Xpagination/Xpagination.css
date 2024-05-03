@@ -1,0 +1,28 @@
+/* Pagination.css */
+.pagination {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+th {
+  text-align: left;
+}
+
+.pagination-buttons {
+  margin-top: 10px;
+}
+
+.pagination-buttons button {
+  margin-right: 10px;
+  cursor: pointer;
+}
