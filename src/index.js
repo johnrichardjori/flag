@@ -14,11 +14,12 @@ import Countrysearch from "./Xcountry/Countrysearch";
 import Counterclass from "./Counterclass/Counterclass";
 import Weatherapp from "./Weather/Weatherapp";
 import XSpellCheck from "./Xspellcheck/Xspell";
+import XDictionary from "./Xdictionary/Xdictionary";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <XSpellCheck />
+    <XDictionary />
   </React.StrictMode>
 );
 
