@@ -1,0 +1,21 @@
+.spellcheck-container {
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+}
+
+.spellcheck-textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.correction-message {
+  margin-top: 10px;
+  font-style: italic;
+  color: #666;
+}

@@ -13,11 +13,12 @@ import XLogin from "./Xlogin/Xlogin";
 import Countrysearch from "./Xcountry/Countrysearch";
 import Counterclass from "./Counterclass/Counterclass";
 import Weatherapp from "./Weather/Weatherapp";
+import XSpellCheck from "./Xspellcheck/Xspell";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Weatherapp />
+    <XSpellCheck />
   </React.StrictMode>
 );
 
