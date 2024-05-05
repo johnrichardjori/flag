@@ -15,11 +15,12 @@ import Counterclass from "./Counterclass/Counterclass";
 import Weatherapp from "./Weather/Weatherapp";
 import XSpellCheck from "./Xspellcheck/Xspell";
 import XDictionary from "./Xdictionary/Xdictionary";
+import LocationSelector from "./Xstates/Xstates";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Countrysearch />
+    <LocationSelector />
   </React.StrictMode>
 );
 
