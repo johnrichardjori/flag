@@ -1,33 +1,18 @@
-// CountryApp.jsx
+// CountryApp.js
 
 import React, { useState, useEffect } from "react";
-import "./Countrysearch.css";
+import "./Countrysearch.css"; // Import CSS for styling
 
-const Countrysearch = () => {
+function Countrysearch() {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetchCountries();
+    fetch("https://restcountries.com/v3.1/all")
+      .then((response) => response.json())
+      .then((data) => setCountries(data))
+      .catch((error) => console.error("Error fetching countries:", error));
   }, []);
-
-  const fetchCountries = async () => {
-    try {
-      const response = await fetch("https://restcountries.com/v3.1/all");
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      const data = await response.json();
-      setCountries(data);
-    } catch (error) {
-      console.error(error);
-      alert("Failed to fetch data");
-    }
-  };
-
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-  };
 
   const filteredCountries = countries.filter((country) =>
     country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
@@ -35,22 +20,27 @@ const Countrysearch = () => {
 
   return (
     <div className="country-app">
+      <h1>Country Flags & Names</h1>
       <input
         type="text"
-        placeholder="Search country..."
+        placeholder="Search for a country..."
         value={searchTerm}
-        onChange={handleSearch}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
       <div className="country-list">
-        {filteredCountries.map((country) => (
-          <div key={country.cca2} className="countryCard">
-            <img src={country.flags.svg} alt={country.name.common} />
-            <h2>{country.name.common}</h2>
-          </div>
-        ))}
+        {filteredCountries.length > 0 ? (
+          filteredCountries.map((country, index) => (
+            <div className="countryCard" key={index}>
+              <img src={country.flags.png} alt={country.name.common} />
+              <h2>{country.name.common}</h2>
+            </div>
+          ))
+        ) : (
+          <p>No matching countries found.</p>
+        )}
       </div>
     </div>
   );
-};
+}
 
 export default Countrysearch;
