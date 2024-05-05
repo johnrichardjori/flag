@@ -19,7 +19,7 @@ import XDictionary from "./Xdictionary/Xdictionary";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <XDictionary />
+    <Countrysearch />
   </React.StrictMode>
 );
 
