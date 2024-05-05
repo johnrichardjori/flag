@@ -43,7 +43,7 @@ const Countrysearch = () => {
       />
       <div className="country-list">
         {filteredCountries.map((country) => (
-          <div key={country.cca2} className="country-card">
+          <div key={country.cca2} className="countryCard">
             <img src={country.flags.svg} alt={country.name.common} />
             <h2>{country.name.common}</h2>
           </div>
