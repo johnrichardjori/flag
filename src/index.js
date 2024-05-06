@@ -17,11 +17,12 @@ import XSpellCheck from "./Xspellcheck/Xspell";
 import XDictionary from "./Xdictionary/Xdictionary";
 import LocationSelector from "./Xstates/Xstates";
 import DateViewTable from "./Xtable/Xtable";
+import XModal from "./Xmodel/Xmodel";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <DateViewTable />
+    <XModal />
   </React.StrictMode>
 );
 
