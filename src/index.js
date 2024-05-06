@@ -16,11 +16,12 @@ import Weatherapp from "./Weather/Weatherapp";
 import XSpellCheck from "./Xspellcheck/Xspell";
 import XDictionary from "./Xdictionary/Xdictionary";
 import LocationSelector from "./Xstates/Xstates";
+import DateViewTable from "./Xtable/Xtable";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <LocationSelector />
+    <DateViewTable />
   </React.StrictMode>
 );
 
