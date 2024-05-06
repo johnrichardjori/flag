@@ -18,18 +18,65 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  max-width: 400px;
+  position: relative;
 }
 
 .close {
-  color: #aaa;
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
   font-size: 28px;
   font-weight: bold;
+  color: #000;
+  cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.open-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.open-button:hover {
+  background-color: #45a049;
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
+/* Hide scrollbar */
+body {
+  overflow: hidden;
+}
+
+/* When the modal is open, show the scrollbar */
+.modal-open {
+  overflow: auto;
 }
